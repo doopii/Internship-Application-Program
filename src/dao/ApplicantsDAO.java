@@ -6,13 +6,13 @@ import java.io.*;
 
 
 public class ApplicantsDAO {
-  private String fileName = ""; // For security and maintainability, should not have filename hardcoded here.
+  private String fileName = "applicants.dat"; // For security and maintainability, should not have filename hardcoded here.
   
-  public void saveToFile(ListInterface<Product> productList) {
+  public void saveToFile(ListInterface<Applicant> applicantList) {
     File file = new File(fileName);
     try {
       ObjectOutputStream ooStream = new ObjectOutputStream(new FileOutputStream(file));
-      ooStream.writeObject(productList);
+      ooStream.writeObject(applicantList);
       ooStream.close();
     } catch (FileNotFoundException ex) {
       System.out.println("\nFile not found");
@@ -21,12 +21,12 @@ public class ApplicantsDAO {
     }
   }
 
-  public ListInterface<Product> retrieveFromFile() {
+  public ListInterface<Applicant> retrieveFromFile() {
     File file = new File(fileName);
-    ListInterface<Product> productList = new ArrayList<>();
+    ListInterface<Applicant> applicantList = new LinkedList<>();
     try {
       ObjectInputStream oiStream = new ObjectInputStream(new FileInputStream(file));
-      productList = (ArrayList<Product>) (oiStream.readObject());
+      applicantList = (LinkedList<Applicant>) (oiStream.readObject());
       oiStream.close();
     } catch (FileNotFoundException ex) {
       System.out.println("\nNo such file.");
@@ -35,7 +35,7 @@ public class ApplicantsDAO {
     } catch (ClassNotFoundException ex) {
       System.out.println("\nClass not found.");
     } finally {
-      return productList;
+      return applicantList;
     }
   }
 }
