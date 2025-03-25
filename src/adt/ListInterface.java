@@ -16,4 +16,6 @@ public interface ListInterface<T> {
     int size();
     boolean isEmpty();
     void clear();
+    int getLength();
+    T getEntry(int index);
 }

@@ -2,6 +2,10 @@ package client;
 
 import control.ApplicantManager;
 import entity.Applicant;
+import dao.InterviewInitializer;
+import adt.ListInterface;
+import entity.Interview;
+import control.Schedule; 
 
 
 public class main {
@@ -28,5 +32,6 @@ public class main {
         // Display all applicants after removal
         System.out.println("\nApplicants after removal:");
         manager.displayApplicants();
+        
     }
 }
