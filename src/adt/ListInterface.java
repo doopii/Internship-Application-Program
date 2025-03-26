@@ -18,4 +18,6 @@ public interface ListInterface<T> {
     void clear();
     int getLength();
     T getEntry(int index);
+    
+    // add more methods(T)
 }

@@ -1,16 +1,16 @@
 package control;
 
 import adt.LinkedList;
+import adt.ListInterface;
 import entity.Applicant;
 
 
 public class ApplicantManager {
-    private LinkedList<Applicant> applicantList;
+    private ListInterface<Applicant> applicantList = new LinkedList<>();
 
- 
-    public ApplicantManager() {
-        applicantList = new LinkedList<>();
-    }
+    //  public ApplicantManager() {
+       // applicantList = new LinkedList<>();
+    //}
 
     public void addApplicant(Applicant applicant) {
         applicantList.add(applicant);
