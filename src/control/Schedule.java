@@ -47,17 +47,5 @@ public class Schedule {
         }
     }
     
-    public void sortInterviewByDate() {
-        int n = interviewList.size();
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - 1; j++) {
-                Interview i1 = interviewList.get(j);
-                Interview i2 = interviewList.get(j + 1);
-                if (i1.getInterviewDate().compareTo(i2.getInterviewDate()) > 0) {
-                    interviewList.replace(j, i2);
-                    interviewList.replace(j + 1, i1);
-                }
-            }
-        }
-    }
+    
 }

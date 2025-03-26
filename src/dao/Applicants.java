@@ -39,8 +39,8 @@ public class Applicants {
 
     public static void main(String[] args) {
         // To illustrate how to use the initializeProducts() method
-        initializeApplicants a = new initializeApplicants();
-        ListInterface<Applicant> applicantList = a.initializeApplicants();
+        Applicants initializer = new Applicants();
+        ListInterface<Applicant> applicantList = initializer.initializeApplicants();
         System.out.println("\nProducts:\n" + applicantList);
     }
 }
