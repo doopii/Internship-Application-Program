@@ -106,7 +106,20 @@ public class LinkedList<T> implements ListInterface<T> {
       }
     }
     
-    public void replace(int j, Interview i2) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    @Override
+    public boolean replace(int givenPosition, T newEntry) {
+      boolean isSuccessful = true;
+
+      if ((givenPosition >= 1) && (givenPosition <= size)) {
+        Node currentNode = head;
+        for (int i = 0; i < givenPosition - 1; ++i) {
+          currentNode = currentNode.next;		// advance currentNode to next node
+        }
+        currentNode.data = newEntry;	// currentNode is pointing to the node at givenPosition
+      } else {
+        isSuccessful = false;
+      }
+
+      return isSuccessful;
     }
 }

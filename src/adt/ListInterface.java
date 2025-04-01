@@ -18,6 +18,7 @@ public interface ListInterface<T> {
     void clear();
     int getLength();
     T getEntry(int index);
+    boolean replace(int givenPosition, T newEntry);
     
     // add more methods(T)
 }
