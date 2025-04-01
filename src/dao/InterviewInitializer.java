@@ -25,8 +25,8 @@ public class InterviewInitializer {
         InterviewInitializer initializer = new InterviewInitializer();
         ListInterface<Interview> list = initializer.initializeInterviews();
         System.out.println("Interview List:");
-        for (int i = 0; i < list.getLength(); i++){
-            System.out.println(list.getEntry(i));
+        for (int i = 0; i < list.size(); i++){
+            System.out.println(list.get(i));
         }
     }
 }

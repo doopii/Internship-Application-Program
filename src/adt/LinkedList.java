@@ -1,6 +1,6 @@
 package adt;
 
-import entity.Interview;
+import entity.*;
 
 
 public class LinkedList<T> implements ListInterface<T> {
@@ -87,26 +87,20 @@ public class LinkedList<T> implements ListInterface<T> {
         head = null;
         size = 0;
     }
-    
-    @Override
-    public int getLength() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public T getEntry(int index) {
-      if ((index >= 1) && (index <= size)) {
-        Node current = head;
-        for (int i = 0; i < index; ++i) {
-          current = current.next;
-        }
-        return current.data;	
-      }else {
-          throw new IndexOutOfBoundsException("Invalid index: " + index);
-      }
-    }
-    
+   
     public void replace(int j, Interview i2) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public T getLast() {
+    if (head == null) {
+        return null; // List is empty
+    }
+
+    Node current = head;
+    while (current.next != null) {
+        current = current.next;
+    }
+    return current.data;
     }
 }

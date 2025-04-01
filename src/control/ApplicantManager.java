@@ -16,15 +16,17 @@ public class ApplicantManager {
     }
 
     private String generateNextApplicantID() {
-        if (applicantList.size() == 0) {
-            return "A001";  
-        } else {
-            String lastID = applicantList.get(applicantList.size() - 1).getApplicantID();
-            int lastNumber = Integer.parseInt(lastID.substring(1));  
-            lastNumber++;  
-            return "A" + String.format("%03d", lastNumber);  
-        }
+    if (applicantList.isEmpty()) {
+        return "A001";
+    } else {
+        Applicant lastApplicant = (Applicant) applicantList.getLast();
+        String lastID = lastApplicant.getApplicantID();
+        int lastNumber = Integer.parseInt(lastID.substring(1));
+        lastNumber++;
+        return "A" + String.format("%03d", lastNumber);
     }
+}
+
 
     public void addApplicant(String name, String phone, String email, String skills) {
         String newID = generateNextApplicantID();

@@ -71,4 +71,16 @@ public class Applicant {
                "Email: " + applicantEmail + "\n" +
                "Skills: " + applicantSkill + "\n";
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Applicant other = (Applicant) obj;
+        return applicantID != null && applicantID.equals(other.applicantID);
+    }
 }
