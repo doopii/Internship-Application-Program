@@ -17,6 +17,8 @@ public interface ListInterface<T> {
     boolean isEmpty();
     void clear();
     T getLast();
+    boolean replace(int givenPosition, T newEntry);
+
     
     // add more methods(T)
 }

@@ -1,8 +1,5 @@
 package adt;
 
-import entity.*;
-
-
 public class LinkedList<T> implements ListInterface<T> {
     private class Node {
         T data;
@@ -87,14 +84,30 @@ public class LinkedList<T> implements ListInterface<T> {
         head = null;
         size = 0;
     }
-   
-    public void replace(int j, Interview i2) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+ 
+    @Override
+    public boolean replace(int givenPosition, T newEntry) {
+      boolean isSuccessful = true;
+
+      if ((givenPosition >= 1) && (givenPosition <= size)) {
+        Node currentNode = head;
+        for (int i = 0; i < givenPosition - 1; ++i) {
+          currentNode = currentNode.next;		
+        }
+        currentNode.data = newEntry;	
+      } else {
+        isSuccessful = false;
+      }
+
+      return isSuccessful;
+
     }
     
+    @Override
     public T getLast() {
     if (head == null) {
-        return null; // List is empty
+        return null; 
     }
 
     Node current = head;
