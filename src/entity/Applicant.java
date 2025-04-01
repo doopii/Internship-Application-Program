@@ -69,7 +69,7 @@ public class Applicant {
                "Name: " + applicantName + "\n" +
                "Contact: " + applicantContact + "\n" +
                "Email: " + applicantEmail + "\n" +
-               "Skills: " + applicantSkill + "\n";
+               "Skills: " + applicantSkill;
     }
     
     @Override
