@@ -53,26 +53,30 @@ public class ApplicantManager {
         return null;
     }
 
-
     public void displayApplicants() {
-       System.out.println("\n--- All Applicants ---");
-       if (applicantList.size() == 0) {
-           System.out.println("No applicants available.");
-       } else {
-           System.out.printf("%-12s %-20s %-15s %-30s %-10s%n", "ID", "Name", "Phone", "Email", "Skills");
-           System.out.println("-".repeat(87));
+        System.out.println("\n--- All Applicants ---");
+        if (applicantList.size() == 0) {
+            System.out.println("No applicants available.");
+        } else {
+            System.out.println("_".repeat(92));
+            System.out.println("_".repeat(92));
+            System.out.printf(" %-10s | %-18s | %-13s | %-28s | %-8s %n", 
+                "ID", "Name", "Phone", "Email", "Skills");
+            System.out.println("-".repeat(92));
 
-           for (int i = 0; i < applicantList.size(); i++) {
-               Applicant applicant = applicantList.get(i);
-               System.out.printf("%-12s %-20s %-15s %-30s %-10s%n", 
-                   applicant.getApplicantID(), 
-                   applicant.getApplicantName(), 
-                   applicant.getApplicantContact(), 
-                   applicant.getApplicantEmail(), 
-                   applicant.getApplicantSkill());
-           }
-       }
-   }
+            for (int i = 0; i < applicantList.size(); i++) {
+                Applicant applicant = applicantList.get(i);
+                System.out.printf(" %-10s | %-18s | %-13s | %-28s | %-8s %n", 
+                    applicant.getApplicantID(), 
+                    applicant.getApplicantName(), 
+                    applicant.getApplicantContact(), 
+                    applicant.getApplicantEmail(), 
+                    applicant.getApplicantSkill());
+            }
+            System.out.println("_".repeat(92));
+            System.out.println("_".repeat(92));
+        }
+    }
 
 
 
