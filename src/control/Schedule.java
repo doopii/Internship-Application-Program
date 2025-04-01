@@ -5,6 +5,8 @@
 package control;
 
 import adt.LinkedList;
+import adt.ListInterface;
+import entity.Applicant;
 import entity.Interview;
 
 /**
@@ -12,7 +14,7 @@ import entity.Interview;
  * @author Acer
  */
 public class Schedule {
-    private LinkedList<Interview> interviewList;
+    private ListInterface<Interview> interviewList = new LinkedList<>();
     
     public Schedule() {
         interviewList = new LinkedList<>();
