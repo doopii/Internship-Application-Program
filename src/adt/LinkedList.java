@@ -106,14 +106,27 @@ public class LinkedList<T> implements ListInterface<T> {
     
     @Override
     public T getLast() {
-    if (head == null) {
-        return null; 
-    }
+        if (head == null) {
+            return null; 
+        }
 
-    Node current = head;
-    while (current.next != null) {
-        current = current.next;
+        Node current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        return current.data;
     }
-    return current.data;
+    
+    @Override
+    public boolean contains(T anEntry) {
+        Node current = head;
+        while (current != null) {
+            if (current.data.equals(anEntry)) {
+                return true; // Found the element
+            }
+            current = current.next;
+        }
+        return false; // Element not found
     }
+    
 }

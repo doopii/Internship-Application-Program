@@ -28,18 +28,47 @@ public class ApplicantManager {
 }
 
 
-    public void addApplicant(String name, String phone, String email, String skills) {
+    public void addApplicant() {
+        Scanner scanner = new Scanner(System.in);
+        String name, contact, email, skills;
+
+        System.out.print("Enter Name: ");
+        name = scanner.nextLine();
+
+        while (true) {
+            System.out.print("Enter Contact Number: ");
+            contact = scanner.nextLine();
+
+            boolean duplicateFound = false;
+            for (int i = 0; i < applicantList.size(); i++) {
+                if (applicantList.get(i).getApplicantContact().equals(contact)) {
+                    System.out.println("Error: Contact number is already registered. Try again.");
+                    duplicateFound = true;
+                    break;
+                }
+            }
+
+            if (!duplicateFound) break; // Exit loop if no duplicates found
+        }
+
+        System.out.print("Enter Email: ");
+        email = scanner.nextLine();
+
+        System.out.print("Enter Skills: ");
+        skills = scanner.nextLine();
+
         String newID = generateNextApplicantID();
-        Applicant newApplicant = new Applicant(newID, name, phone, email, skills);
+        Applicant newApplicant = new Applicant(newID, name, contact, email, skills);
         applicantList.add(newApplicant);
-    }
+        System.out.println("Applicant added successfully.");
+}
+
 
     public boolean removeApplicant(String applicantID) {
-        for (int i = 0; i < applicantList.size(); i++) {
-            if (applicantList.get(i).getApplicantID().equals(applicantID)) {
-                applicantList.remove(applicantList.get(i));
-                return true;
-            }
+        Applicant toRemove = searchApplicant("ID", applicantID);
+        if (toRemove != null && applicantList.contains(toRemove)) {
+            applicantList.remove(toRemove);
+            return true;
         }
         return false;
     }
@@ -58,7 +87,7 @@ public class ApplicantManager {
                         return applicant;
                     }
                     break;
-                case "Phone":
+                case "Contact":
                     if (applicant.getApplicantContact().equals(searchTerm)) {
                         return applicant;
                     }
@@ -81,7 +110,7 @@ public class ApplicantManager {
             System.out.println("_".repeat(92));
             System.out.println("_".repeat(92));
             System.out.printf(" %-10s | %-18s | %-13s | %-28s | %-8s %n", 
-                "ID", "Name", "Phone", "Email", "Skills");
+                "ID", "Name", "Contact", "Email", "Skills");
             System.out.println("-".repeat(92));
 
             for (int i = 0; i < applicantList.size(); i++) {
@@ -126,17 +155,7 @@ public class ApplicantManager {
                     break;
 
                 case 2:
-                    System.out.print("Enter Name: ");
-                    String name = scanner.nextLine();
-                    System.out.print("Enter Phone Number: ");
-                    String phone = scanner.nextLine();
-                    System.out.print("Enter Email: ");
-                    String email = scanner.nextLine();
-                    System.out.print("Enter Skills: ");
-                    String skills = scanner.nextLine();
-
-                    manager.addApplicant(name, phone, email, skills);
-                    System.out.println("Applicant added successfully.");
+                    manager.addApplicant();
                     break;
 
                 case 3:
@@ -156,7 +175,7 @@ public class ApplicantManager {
                         System.out.println("\n--- Search Options ---");
                         System.out.println("1. Search by ID");
                         System.out.println("2. Search by Name");
-                        System.out.println("3. Search by Phone");
+                        System.out.println("3. Search by Contact");
                         System.out.println("4. Search by Email");
                         System.out.println("5. Back to Main Menu");
                         System.out.println("-".repeat(30));
@@ -173,7 +192,7 @@ public class ApplicantManager {
                                 searchBy = "Name";
                                 break;
                             case 3:
-                                searchBy = "Phone";
+                                searchBy = "Contact";
                                 break;
                             case 4:
                                 searchBy = "Email";

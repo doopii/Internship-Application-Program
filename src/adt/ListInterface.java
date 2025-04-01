@@ -18,6 +18,7 @@ public interface ListInterface<T> {
     void clear();
     T getLast(); //e
     boolean replace(int givenPosition, T newEntry);
+    public boolean contains(T anEntry);
 
     
     // add more methods(T)
