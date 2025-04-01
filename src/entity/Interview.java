@@ -68,4 +68,15 @@ public class Interview {
         return "Interview{" + "jobID=" + jobID + ", scheduleID=" + scheduleID + ", interviewID=" + interviewID + ", interviewPosition=" + interviewPosition + ", interviewDate=" + interviewDate + '}';
     }
     
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Interview other = (Interview) obj;
+        return interviewID != null && interviewID.equals(other.interviewID);
+    }
 }

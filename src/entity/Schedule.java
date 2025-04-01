@@ -58,4 +58,17 @@ public class Schedule {
         return "Schedule{" + "scheduleID=" + scheduleID + ", scheduleTime=" + scheduleTime + ", scheduleDesc=" + scheduleDesc + ", scheduleStatus=" + scheduleStatus + '}';
     }
     
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Schedule other = (Schedule) obj;
+        return scheduleID != null && scheduleID.equals(other.scheduleID);
+    }
+
+    
 }
