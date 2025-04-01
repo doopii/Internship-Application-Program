@@ -8,10 +8,6 @@ import entity.Applicant;
 public class ApplicantManager {
     private ListInterface<Applicant> applicantList = new LinkedList<>();
 
-    //  public ApplicantManager() {
-       // applicantList = new LinkedList<>();
-    //}
-
     public void addApplicant(Applicant applicant) {
         applicantList.add(applicant);
     }
