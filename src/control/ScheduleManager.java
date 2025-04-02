@@ -4,8 +4,8 @@
  */
 package control;
 
-import adt.LinkedList;
-import adt.ListInterface;
+import adt.DoublyLinkedList;
+import adt.DoublyListInterface;
 import entity.Interview;
 import dao.InitialiserJava;
 import java.util.Scanner;
@@ -15,18 +15,16 @@ import java.util.Scanner;
  * @author Acer
  */
 public class ScheduleManager {
-    private ListInterface<Interview> interviewList = new LinkedList<>();
+    private DoublyListInterface<Interview> interviewList = new DoublyLinkedList<>();
     
-    public ScheduleManager() {
-        interviewList = new LinkedList<>();
-    }
+
     
     public void initialiserJava() {
         InitialiserJava initializer = new InitialiserJava();
-        ListInterface<Interview> interviewList = initializer.initializeInterviews();
+        DoublyListInterface<Interview> interviewList = initializer.initializeInterviews();
 
-        for (int i = 0; i < interviewList.size(); i++) {
-            Interview interview = interviewList.get(i);
+        for (int i = 0; i < interviewList.getNumberOfEntries(); i++) {
+            Interview interview = interviewList.getEntry(i);
             addInterview(
                 interview.getInterviewID(),
                 interview.getJobID(),
@@ -37,8 +35,8 @@ public class ScheduleManager {
     }
     
     public boolean addInterview(String interviewID, String jobID, String date, String time) {
-        for (int i = 0; i < interviewList.size(); i++) {
-            if (interviewList.get(i).getInterviewID().equals(interviewID)) {
+        for (int i = 0; i < interviewList.getNumberOfEntries(); i++) {
+            if (interviewList.getEntry(i).getInterviewID().equals(interviewID)) {
                 return false; //duplicat interview id
             }
         }
@@ -49,9 +47,9 @@ public class ScheduleManager {
     }
     
     public boolean removeInterview(String interviewID) {
-        for(int i = 0; i < interviewList.size(); i++) {
-            if(interviewList.get(i).getInterviewID().equals(interviewID)) {
-                interviewList.remove(interviewList.get(i));
+        for(int i = 0; i < interviewList.getNumberOfEntries(); i++) {
+            if(interviewList.getEntry(i).getInterviewID().equals(interviewID)) {
+                interviewList.remove(interviewList.getEntry(i));
                 return true;
             }
         }
@@ -59,23 +57,23 @@ public class ScheduleManager {
     }
     
     public Interview searchInterview(String interviewID) {
-        for (int i = 0; i < interviewList.size(); i++) {
-            if (interviewList.get(i).getInterviewID().equals(interviewID)) {
-                return interviewList.get(i);
+        for (int i = 0; i < interviewList.getNumberOfEntries(); i++) {
+            if (interviewList.getEntry(i).getInterviewID().equals(interviewID)) {
+                return interviewList.getEntry(i);
             }
         }
         return null;
     }
 
     public void displayInterviews() {
-        for (int i = 0; i < interviewList.size(); i++) {
-            System.out.println(interviewList.get(i));
+        for (int i = 0; i < interviewList.getNumberOfEntries(); i++) {
+            System.out.println(interviewList.getEntry(i));
         }
     }
     
     public boolean updateInterview(String interviewID, String newDate, String newTime) {
-        for (int i = 0; i < interviewList.size(); i++) {
-            Interview interview = interviewList.get(i);
+        for (int i = 0; i < interviewList.getNumberOfEntries(); i++) {
+            Interview interview = interviewList.getEntry(i);
             if (interview.getInterviewID().equals(interviewID)) {
                 interview.setInterviewDate(newDate);
                 interview.setInterviewDate(newTime);
@@ -92,8 +90,8 @@ public class ScheduleManager {
     } 
     
     public void filterByJob(String jobID) {
-        for (int i = 0; i < interviewList.size(); i++) {
-            Interview interview = interviewList.get(i);
+        for (int i = 0; i < interviewList.getNumberOfEntries(); i++) {
+            Interview interview = interviewList.getEntry(i);
             if(interview.getJobID().equals(jobID)) {
                 System.out.println(interview);
             }
@@ -101,14 +99,14 @@ public class ScheduleManager {
     }
     
     public void bubbleSortDate() {
-        int n = interviewList.size();
+        int n = interviewList.getNumberOfEntries();
         boolean sorted = false;
 
         for (int pass = 1; pass < n && !sorted; pass++) {
             sorted = true;
             for (int i = 0; i < n - pass; i++) {
-                Interview first = interviewList.get(i);
-                Interview second = interviewList.get(i + 1);
+                Interview first = interviewList.getEntry(i);
+                Interview second = interviewList.getEntry(i + 1);
 
                 // Compare based on interviewID (you can customize to date/time)
                 if (first.getInterviewDate().compareTo(second.getInterviewDate()) > 0) {

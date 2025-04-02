@@ -4,6 +4,9 @@
  */
 package entity;
 
+import adt.DoublyLinkedList;
+
+
 /**
  *
  * @author evago
@@ -13,14 +16,26 @@ public class Applicant {
     private String applicantName;
     private String applicantContact;
     private String applicantEmail;
-    private String applicantSkill;
+    private DoublyLinkedList<Skill> skill;
+    private DoublyLinkedList<JobDesired> jobDesired;
 
-    public Applicant(String applicantID, String applicantName, String applicantContact, String applicantEmail, String applicantSkill) {
+    public Applicant(String applicantID, String applicantName, String applicantContact, String applicantEmail, DoublyLinkedList<Skill> skill, DoublyLinkedList<JobDesired> jobDesired) {
         this.applicantID = applicantID;
         this.applicantName = applicantName;
         this.applicantContact = applicantContact;
         this.applicantEmail = applicantEmail;
-        this.applicantSkill = applicantSkill;
+        this.skill = skill;
+        this.jobDesired = jobDesired;
+    }
+
+    @Override
+    public String toString() {
+        return "Applicant{" + "applicantID=" + applicantID +
+                ", applicantName: " + applicantName +
+                ", applicantContact: " + applicantContact +
+                ", applicantEmail: " + applicantEmail +
+                ", skill: " + skill +
+                ", jobDesired: " + jobDesired;
     }
 
     public String getApplicantID() {
@@ -55,32 +70,23 @@ public class Applicant {
         this.applicantEmail = applicantEmail;
     }
 
-    public String getApplicantSkill() {
-        return applicantSkill;
+    public DoublyLinkedList<Skill> getSkill() {
+        return skill;
     }
 
-    public void setApplicantSkill(String applicantSkill) {
-        this.applicantSkill = applicantSkill;
+    public void setSkill(DoublyLinkedList<Skill> skill) {
+        this.skill = skill;
     }
 
-    @Override
-    public String toString() {
-        return "Applicant ID: " + applicantID + "\n" +
-               "Name: " + applicantName + "\n" +
-               "Contact: " + applicantContact + "\n" +
-               "Email: " + applicantEmail + "\n" +
-               "Skills: " + applicantSkill;
+    public DoublyLinkedList<JobDesired> getJobDesired() {
+        return jobDesired;
+    }
+
+    public void setJobDesired(DoublyLinkedList<JobDesired> jobDesired) {
+        this.jobDesired = jobDesired;
     }
     
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Applicant other = (Applicant) obj;
-        return applicantID != null && applicantID.equals(other.applicantID);
-    }
+    
+    
+    
 }

@@ -1,14 +1,16 @@
 package control;
 
-import adt.ListInterface;
-import adt.LinkedList;
+import adt.DoublyLinkedList;
+import adt.DoublyListInterface;
 import entity.Applicant;
+import entity.Skill;
+import entity.JobDesired;
 import dao.InitialiserJava;
 
 import java.util.Scanner;
 
 public class ApplicantManager {
-    private ListInterface<Applicant> applicantList = new LinkedList<>();
+    private DoublyListInterface<Applicant> applicantList = new DoublyLinkedList<>();
 
     public void initializeApplicants() {
         InitialiserJava initialiser = new InitialiserJava();
@@ -30,102 +32,94 @@ public class ApplicantManager {
 
     public void addApplicant() {
         Scanner scanner = new Scanner(System.in);
-        String name, contact, email, skills;
+        String name, contact, email, categoryInput, skillNameInput, proficiencyInput, jobCategoryInput, jobPositionInput;
+        double cgpaInput;
 
+        // Collecting applicant details
         System.out.print("Enter Name: ");
         name = scanner.nextLine();
 
+        // Ensure contact is unique
         while (true) {
             System.out.print("Enter Contact Number: ");
             contact = scanner.nextLine();
 
             boolean duplicateFound = false;
-            for (int i = 0; i < applicantList.size(); i++) {
-                if (applicantList.get(i).getApplicantContact().equals(contact)) {
+            for (int i = 1; i <= applicantList.getNumberOfEntries(); i++) {
+                if (applicantList.getEntry(i).getApplicantContact().equals(contact)) {
                     System.out.println("Error: Contact number is already registered. Try again.");
                     duplicateFound = true;
                     break;
                 }
             }
-
-            if (!duplicateFound) break; // Exit loop if no duplicates found
+            if (!duplicateFound) {
+                break;
+            }
         }
 
         System.out.print("Enter Email: ");
         email = scanner.nextLine();
 
-        System.out.print("Enter Skills: ");
-        skills = scanner.nextLine();
+        // Handling skills as individual inputs
+        DoublyLinkedList<Skill> skills = new DoublyLinkedList<>();
+        System.out.println("Enter Skills (enter 'ok' when finished): ");
+        while (true) {
+            System.out.print("Enter Skill Category: ");
+            categoryInput = scanner.nextLine();
+
+            if (categoryInput.equalsIgnoreCase("ok")) {
+                break;
+            }
+
+            System.out.print("Enter Skill Name: ");
+            skillNameInput = scanner.nextLine();
+
+            System.out.print("Enter Proficiency Level: ");
+            proficiencyInput = scanner.nextLine();
+
+            System.out.print("Enter CGPA: ");
+            cgpaInput = scanner.nextDouble();
+            scanner.nextLine();  // Consume the remaining newline
+
+            Skill skill = new Skill(categoryInput, skillNameInput, proficiencyInput, cgpaInput);
+            skills.add(skill);
+        }
+
+        // Handling job desires as individual inputs
+        DoublyLinkedList<JobDesired> jobDesired = new DoublyLinkedList<>();
+        System.out.println("Enter Job Desired (enter 'done' when finished): ");
+        while (true) {
+            System.out.print("Enter Job Category: ");
+            jobCategoryInput = scanner.nextLine();
+
+            if (jobCategoryInput.equalsIgnoreCase("done")) {
+                break;
+            }
+
+            System.out.print("Enter Job Position: ");
+            jobPositionInput = scanner.nextLine();
+
+            JobDesired job = new JobDesired(jobCategoryInput, jobPositionInput);
+            jobDesired.add(job);
+        }
 
         String newID = generateNextApplicantID();
-        Applicant newApplicant = new Applicant(newID, name, contact, email, skills);
+        Applicant newApplicant = new Applicant(newID, name, contact, email, skills, jobDesired);
+
         applicantList.add(newApplicant);
         System.out.println("Applicant added successfully.");
-}
-
-
-    public boolean removeApplicant(String applicantID) {
-        Applicant toRemove = searchApplicant("ID", applicantID);
-        if (toRemove != null && applicantList.contains(toRemove)) {
-            applicantList.remove(toRemove);
-            return true;
-        }
-        return false;
     }
 
-     public Applicant searchApplicant(String searchBy, String searchTerm) {
-        for (int i = 0; i < applicantList.size(); i++) {
-            Applicant applicant = applicantList.get(i);
-            switch (searchBy) {
-                case "ID":
-                    if (applicant.getApplicantID().equals(searchTerm)) {
-                        return applicant;
-                    }
-                    break;
-                case "Name":
-                    if (applicant.getApplicantName().equals(searchTerm)) {
-                        return applicant;
-                    }
-                    break;
-                case "Contact":
-                    if (applicant.getApplicantContact().equals(searchTerm)) {
-                        return applicant;
-                    }
-                    break;
-                case "Email":
-                    if (applicant.getApplicantEmail().equals(searchTerm)) {
-                        return applicant;
-                    }
-                    break;
-            }
-        }
-        return null;
-    }
 
+
+    public void removeApplicants() {
+    
+    } // removeApplicants 
+    
     public void displayApplicants() {
-        System.out.println("\n--- All Applicants ---");
-        if (applicantList.size() == 0) {
-            System.out.println("No applicants available.");
-        } else {
-            System.out.println("_".repeat(92));
-            System.out.println("_".repeat(92));
-            System.out.printf(" %-10s | %-18s | %-13s | %-28s | %-8s %n", 
-                "ID", "Name", "Contact", "Email", "Skills");
-            System.out.println("-".repeat(92));
+    
+    } // displayApplicants 
 
-            for (int i = 0; i < applicantList.size(); i++) {
-                Applicant applicant = applicantList.get(i);
-                System.out.printf(" %-10s | %-18s | %-13s | %-28s | %-8s %n", 
-                    applicant.getApplicantID(), 
-                    applicant.getApplicantName(), 
-                    applicant.getApplicantContact(), 
-                    applicant.getApplicantEmail(), 
-                    applicant.getApplicantSkill());
-            }
-            System.out.println("_".repeat(92));
-            System.out.println("_".repeat(92));
-        }
-    }
 
 
 
@@ -141,7 +135,7 @@ public class ApplicantManager {
             System.out.println("1. Display All Applicants");
             System.out.println("2. Add Applicant");
             System.out.println("3. Remove Applicant");
-            System.out.println("4. Search Applicant");
+            System.out.println("4. Filter Applicant");
             System.out.println("5. Exit");
             System.out.println("-".repeat(30));
             System.out.print("Choose an option: ");
@@ -162,17 +156,12 @@ public class ApplicantManager {
                     System.out.println("-".repeat(30));
                     System.out.print("Enter Applicant ID to remove: ");
                     String removeID = scanner.nextLine();
-                    if (manager.removeApplicant(removeID)) {
-                        System.out.println("Applicant removed successfully.");
-                    } else {
-                        System.out.println("Applicant not found.");
-                    }
-                    break;
+                    
 
                 case 4:
                     boolean backToSearch = false;
                     while (!backToSearch) {
-                        System.out.println("\n--- Search Options ---");
+                        System.out.println("\n--- Filter Options ---");
                         System.out.println("1. Search by ID");
                         System.out.println("2. Search by Name");
                         System.out.println("3. Search by Contact");
@@ -183,45 +172,7 @@ public class ApplicantManager {
                         int searchChoice = scanner.nextInt();
                         scanner.nextLine();  
 
-                        String searchBy = "";
-                        switch (searchChoice) {
-                            case 1:
-                                searchBy = "ID";
-                                break;
-                            case 2:
-                                searchBy = "Name";
-                                break;
-                            case 3:
-                                searchBy = "Contact";
-                                break;
-                            case 4:
-                                searchBy = "Email";
-                                break;
-                            case 5:
-                                backToSearch = true;
-                                continue;
-                            default:
-                                System.out.println("Invalid option. Please try again.");
-                                continue;
-                        }
-
-                        if (!searchBy.equals("")) {
-                            System.out.print("Enter " + searchBy + " to search: ");
-                            String searchTerm = scanner.nextLine();
-                            Applicant foundApplicant = manager.searchApplicant(searchBy, searchTerm);
-                            if (foundApplicant != null) {
-                                System.out.println("\n");
-                                System.out.println("*".repeat(30));
-                                System.out.println("Found: ");
-                                System.out.println("-".repeat(30));
-                                System.out.println(foundApplicant);
-                                System.out.println("*".repeat(30));
-                            } else {
-                                System.out.println("*".repeat(30));
-                                System.out.println("Applicant not found.");
-                                System.out.println("*".repeat(30));
-                            }
-                        }
+                       
                     }
                     break;
 
