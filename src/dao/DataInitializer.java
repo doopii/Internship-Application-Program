@@ -35,11 +35,11 @@ public class DataInitializer {
 //        skillList = new LinkedList<>();
 
         // Create Companies
-        Company c1 = new Company("C1001", "TechCorp", "New York");
-        Company c2 = new Company("C1002", "DataPro", "San Francisco");
-        Company c3 = new Company("C1003", "Designify", "Remote");
-        Company c4 = new Company("C1004", "BrandBoost", "Los Angeles");
-        Company c5 = new Company("C1005", "SecureNet", "Washington D.C.");
+        Company c1 = new Company("C1001", "TechCorp", "Selangor");
+        Company c2 = new Company("C1002", "DataPro", "Johor");
+        Company c3 = new Company("C1003", "Designify", "Penang");
+        Company c4 = new Company("C1004", "BrandBoost", "Sabah");
+        Company c5 = new Company("C1005", "SecureNet", "Kuala Lumpur");
 
         // Create Jobs with JobRequirements
         Job j1 = new Job("J1001", "Software Engineer", 1500, 6, "Inactive",

@@ -5,15 +5,20 @@ public class Skill {
     private String category;
     private String skillName;
     private String proficiency;
-    private double cgpa;
 
-    public Skill(String category, String skillName, String proficiency, double cgpa) {
+    public Skill(String category, String skillName, String proficiency) {
         this.category = category;
         this.skillName = skillName;
         this.proficiency = proficiency;
-        this.cgpa = cgpa;
     }
 
+    @Override
+    public String toString() {
+        return "Skill{" + "category=" + category + ", skillName=" + skillName + ", proficiency=" + proficiency + '}';
+    }
+
+    
+    
     public String getCategory() {
         return category;
     }
@@ -38,18 +43,7 @@ public class Skill {
         this.proficiency = proficiency;
     }
 
-    public double getCgpa() {
-        return cgpa;
-    }
-
-    public void setCgpa(double cgpa) {
-        this.cgpa = cgpa;
-    }
-
-    @Override
-    public String toString() {
-        return "Skill{" + "category=" + category + ", skillName=" + skillName + ", proficiency=" + proficiency + ", cgpa=" + cgpa + '}';
-    }
+    
 
 
     

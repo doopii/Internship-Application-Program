@@ -1,8 +1,7 @@
 package boundary;
 
 import adt.DoublyListInterface;
-import adt.LinkedList;
-import adt.ListInterface;
+
 import entity.Company;
 import entity.Job;
 import entity.JobRequirement;

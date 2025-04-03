@@ -1,41 +1,42 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entity;
 
 import adt.DoublyLinkedList;
 
-
-/**
- *
- * @author evago
- */
 public class Applicant {
     private String applicantID;
     private String applicantName;
     private String applicantContact;
     private String applicantEmail;
-    private DoublyLinkedList<Skill> skill;
-    private DoublyLinkedList<JobDesired> jobDesired;
+    private String applicantAddress; 
+    private double cgpa;
 
-    public Applicant(String applicantID, String applicantName, String applicantContact, String applicantEmail, DoublyLinkedList<Skill> skill, DoublyLinkedList<JobDesired> jobDesired) {
+    private DoublyLinkedList<Skill> skillList;
+    private DoublyLinkedList<JobDesired> jobDesiredList;
+
+    public Applicant(String applicantID, String applicantName, String applicantContact, String applicantEmail,
+                     String applicantAddress, double cgpa, DoublyLinkedList<Skill> skillList, DoublyLinkedList<JobDesired> jobDesiredList) {
         this.applicantID = applicantID;
         this.applicantName = applicantName;
         this.applicantContact = applicantContact;
         this.applicantEmail = applicantEmail;
-        this.skill = skill;
-        this.jobDesired = jobDesired;
+        this.applicantAddress = applicantAddress;
+        this.cgpa = cgpa;
+        this.skillList = skillList;
+        this.jobDesiredList = jobDesiredList;
     }
 
     @Override
     public String toString() {
-        return "Applicant{" + "applicantID=" + applicantID +
-                ", applicantName: " + applicantName +
-                ", applicantContact: " + applicantContact +
-                ", applicantEmail: " + applicantEmail +
-                ", skill: " + skill +
-                ", jobDesired: " + jobDesired;
+        return "Applicant{" +
+                "applicantID='" + applicantID + '\'' +
+                ", applicantName='" + applicantName + '\'' +
+                ", applicantContact='" + applicantContact + '\'' +
+                ", applicantEmail='" + applicantEmail + '\'' +
+                ", applicantAddress='" + applicantAddress + '\'' +
+                ", cgpa=" + cgpa +
+                ", skillList=" + skillList +
+                ", jobDesiredList=" + jobDesiredList +
+                '}';
     }
 
     public String getApplicantID() {
@@ -70,23 +71,38 @@ public class Applicant {
         this.applicantEmail = applicantEmail;
     }
 
-    public DoublyLinkedList<Skill> getSkill() {
-        return skill;
+    public String getApplicantAddress() {
+        return applicantAddress;
     }
 
-    public void setSkill(DoublyLinkedList<Skill> skill) {
-        this.skill = skill;
+    public void setApplicantAddress(String applicantAddress) {
+        this.applicantAddress = applicantAddress;
     }
 
-    public DoublyLinkedList<JobDesired> getJobDesired() {
-        return jobDesired;
+    public double getCgpa() {
+        return cgpa;
     }
 
-    public void setJobDesired(DoublyLinkedList<JobDesired> jobDesired) {
-        this.jobDesired = jobDesired;
+    public void setCgpa(double cgpa) {
+        this.cgpa = cgpa;
     }
-    
-    
+
+    public DoublyLinkedList<Skill> getSkillList() {
+        return skillList;
+    }
+
+    public void setSkillList(DoublyLinkedList<Skill> skillList) {
+        this.skillList = skillList;
+    }
+
+    public DoublyLinkedList<JobDesired> getJobDesiredList() {
+        return jobDesiredList;
+    }
+
+    public void setJobDesiredList(DoublyLinkedList<JobDesired> jobDesiredList) {
+        this.jobDesiredList = jobDesiredList;
+    }
     
     
 }
+
