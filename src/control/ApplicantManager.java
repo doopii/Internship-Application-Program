@@ -14,6 +14,18 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.HashSet;
 
+// Covered DLL 
+    //add() – To add applicants, skills, and job entries.
+    //getEntry(int index) – To access data for display, filtering, sorting, updating.
+    //remove(int index) – To delete applicants.
+    //replace(int index, T newEntry) – To update applicant details.
+    //getNumberOfEntries() – To loop through the list.
+    //isEmpty() – To check if lists are empty before performing actions.
+    //getLast() – To get the last applicant for ID generation.
+    //clone() – To make a copy of the list for filtering without changing the original.
+    //contains(value) – To avoid duplicates in skill and job category selections.
+    //swap(index1, index2) – Used in sorting (BubbleSort).
+
 public class ApplicantManager {
     private DoublyListInterface<Applicant> applicantList = new DoublyLinkedList<>();
     private DoublyListInterface<Skill> skillList;
