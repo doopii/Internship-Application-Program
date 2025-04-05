@@ -263,7 +263,6 @@ public class ApplicantManager {
             return;
         }
 
-        // Display full applicant table like in showAllApplicants
         System.out.println("\n========== Applicant List ==========");
         System.out.println("=".repeat(110));
         System.out.printf("%-6s | %-20s | %-12s | %-30s | %-15s | %-4s\n", 
@@ -294,7 +293,6 @@ public class ApplicantManager {
             System.out.println("-".repeat(110));
         }
 
-        // Proceed with removal
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Applicant ID to remove: ");
         String id = scanner.nextLine().trim();
@@ -710,7 +708,6 @@ public class ApplicantManager {
     } // filterBySkillHierarchy
 
     private DoublyListInterface<Applicant> filterBySkillCountOnlyInCategory(DoublyListInterface<Applicant> list, Scanner scanner, DoublyListInterface<String> currentFilters) {
-        // Step 1: Show available skill categories
         DoublyLinkedList<String> categories = new DoublyLinkedList<>();
         for (int i = 1; i <= skillList.getNumberOfEntries(); i++) {
             String cat = skillList.getEntry(i).getCategory();
@@ -881,7 +878,7 @@ public class ApplicantManager {
 
         // === CGPA Distribution ===
         System.out.println("\nCGPA Distribution:");
-        int[] ranges = new int[5]; // 0: <2.0, 1: 2.0–2.49, ..., 4: 3.5–4.0
+        int[] ranges = new int[5]; 
         for (int i = 1; i <= applicantList.getNumberOfEntries(); i++) {
             double cgpa = applicantList.getEntry(i).getCgpa();
             if (cgpa < 2.0) ranges[0]++;
@@ -896,19 +893,74 @@ public class ApplicantManager {
         }
         System.out.println("-".repeat(100));
         System.out.println("END OF REPORT");
-    }
+    } //generateApplicantReport
 
     private String centerText(String text, int width) {
         int padSize = (width - text.length()) / 2;
         return " ".repeat(Math.max(0, padSize)) + text;
-    }
+    } //centerText
 
+    public void showBasicApplicantTable() {
+        if (applicantList.isEmpty()) {
+            System.out.println("No applicants available.");
+            return;
+        }
+
+        System.out.println("-".repeat(100));
+        System.out.printf("%-6s | %-20s | %-12s | %-30s | %-15s | %-4s\n", 
+            "ID", "Name", "Contact", "Email", "Address", "CGPA");
+        System.out.println("-".repeat(100));
+
+        for (int i = 1; i <= applicantList.getNumberOfEntries(); i++) {
+            Applicant a = applicantList.getEntry(i);
+            System.out.printf("%-6s | %-20s | %-12s | %-30s | %-15s | %-4.2f\n",
+                a.getApplicantID(), a.getApplicantName(), a.getApplicantContact(), 
+                a.getApplicantEmail(), a.getApplicantAddress(), a.getCgpa());
+        }
+
+        System.out.println("-".repeat(100));
+    } //showBasicApplicantTable
+
+    public void showAllSkills() {
+        if (skillList == null || skillList.isEmpty()) {
+            System.out.println("No skills available.");
+            return;
+        }
+        System.out.printf("%-20s | %-15s | %-12s\n", "Skill Name", "Category", "Proficiency");
+        System.out.println("-".repeat(50));
+        for (int i = 1; i <= skillList.getNumberOfEntries(); i++) {
+            Skill s = skillList.getEntry(i);
+            System.out.printf("%-20s | %-15s | %-12s\n", s.getSkillName(), s.getCategory(), s.getProficiency());
+        }
+    }  // showAllSkills
+
+    public void showAllDesiredJobs() {
+        if (jobDesiredList == null || jobDesiredList.isEmpty()) {
+            System.out.println("No job positions available.");
+            return;
+        }
+        System.out.printf("%-25s | %-15s\n", "Position", "Category");
+        System.out.println("-".repeat(45));
+        for (int i = 1; i <= jobDesiredList.getNumberOfEntries(); i++) {
+            JobDesired j = jobDesiredList.getEntry(i);
+            System.out.printf("%-25s | %-15s\n", j.getPosition(), j.getCategory());
+        }
+    } // showAllDesiredJobs
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ApplicantManager manager = new ApplicantManager();
         manager.initializeData(); 
 
+        System.out.println("\n==== Initialized Applicant Data ====");
+        manager.showBasicApplicantTable();
+
+        System.out.println("\n==== Initialized Skill List ====");
+        manager.showAllSkills();
+
+        System.out.println("\n==== Initialized Job List ====");
+        manager.showAllDesiredJobs();
+        
         boolean exit = false;
         while (!exit) {
             System.out.println("\n" + "=".repeat(40));
