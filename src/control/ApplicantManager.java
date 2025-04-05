@@ -70,8 +70,7 @@ public class ApplicantManager {
             default:
                 System.out.println("Invalid choice.");
         }
-    }
-
+    } // sortApplicantsMenu - done
 
     private String generateNextApplicantID() {
     if (applicantList.isEmpty()) {
@@ -83,7 +82,7 @@ public class ApplicantManager {
         lastNumber++;
         return "A" + String.format("%03d", lastNumber);
     }
-}
+} // generateNextApplicantID - done
     
     public void showAllApplicants() {
         if (applicantList.isEmpty()) {
@@ -325,7 +324,7 @@ public class ApplicantManager {
         }
     }  // removeApplicant - donw
 
-public void updateApplicant() {
+    public void updateApplicant() {
     if (applicantList.isEmpty()) {
         System.out.println("No applicants to update.");
         return;
@@ -533,8 +532,7 @@ public void updateApplicant() {
 
     applicantList.replace(targetIndex, target);
     System.out.println("\n✅ Applicant updated successfully.");
-}
-
+} // updateApplicant - done
 
     public void filterApplicants() {
         if (applicantList.isEmpty()) {
