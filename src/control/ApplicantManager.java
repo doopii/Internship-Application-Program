@@ -97,7 +97,7 @@ public class ApplicantManager {
 
         for (int i = 1; i <= applicantList.getNumberOfEntries(); i++) {
             Applicant a = applicantList.getEntry(i);
-
+            System.out.println("-".repeat(110));
             System.out.printf("%-6s | %-20s | %-12s | %-30s | %-15s | %-4.2f\n",
             a.getApplicantID(), a.getApplicantName(), a.getApplicantContact(), a.getApplicantEmail(), a.getApplicantAddress(), a.getCgpa());
 
@@ -533,6 +533,56 @@ public class ApplicantManager {
     applicantList.replace(targetIndex, target);
     System.out.println("\n✅ Applicant updated successfully.");
 } // updateApplicant - done
+    
+    public void searchApplicant() {
+        if (applicantList.isEmpty()) {
+            System.out.println("No applicants to search.");
+            return;
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\n--- Search Applicant ---");
+        System.out.println("1. Search by ID");
+        System.out.println("2. Search by Name");
+        System.out.print("Choose an option: ");
+        String choice = scanner.nextLine().trim();
+
+        boolean found = false;
+
+        if (choice.equals("1")) {
+            System.out.print("Enter Applicant ID: ");
+            String id = scanner.nextLine().trim();
+
+            for (int i = 1; i <= applicantList.getNumberOfEntries(); i++) {
+                Applicant a = applicantList.getEntry(i);
+                if (a.getApplicantID().equalsIgnoreCase(id)) {
+                    printApplicantDetails(a);
+                    found = true;
+                    break;
+                }
+            }
+
+        } else if (choice.equals("2")) {
+            System.out.print("Enter name: ");
+            String keyword = scanner.nextLine().trim().toLowerCase();
+
+            for (int i = 1; i <= applicantList.getNumberOfEntries(); i++) {
+                Applicant a = applicantList.getEntry(i);
+                if (a.getApplicantName().toLowerCase().contains(keyword)) {
+                    printApplicantDetails(a);
+                    found = true;
+                }
+            }
+        } else {
+            System.out.println("Invalid choice.");
+            return;
+        }
+
+        if (!found) {
+            System.out.println("No matching applicant found.");
+        }
+    }
+
 
     public void filterApplicants() {
         if (applicantList.isEmpty()) {
@@ -858,6 +908,7 @@ public class ApplicantManager {
     } // printMatchingHeader
 
     private void printApplicantDetails(Applicant a) {
+        System.out.println("-".repeat(130));
         System.out.printf("%-6s | %-20s | %-12s | %-30s | %-4.2f | %-12s\n",
             a.getApplicantID(), a.getApplicantName(), a.getApplicantContact(), 
             a.getApplicantEmail(), a.getCgpa(), a.getApplicantAddress());
@@ -1073,12 +1124,13 @@ public class ApplicantManager {
             System.out.println("4. Update Applicant");
 
             System.out.println("-".repeat(40));
-            System.out.println("5. Filter Applicants");
-            System.out.println("6. Generate Summary Report");
-            System.out.println("7. Sort Applicants");
+            System.out.println("5. Search Applicant");
+            System.out.println("6. Filter Applicants");
+            System.out.println("7. Generate Summary Report");
+            System.out.println("8. Sort Applicants");
 
             System.out.println("-".repeat(40));
-            System.out.println("8. Exit");
+            System.out.println("9. Exit");
 
             System.out.println("=".repeat(40));
             System.out.print("Choose an option: ");
@@ -1103,15 +1155,18 @@ public class ApplicantManager {
                     manager.updateApplicant();  
                     break;
                 case 5:
-                    manager.filterApplicants();
+                    manager.searchApplicant();
                     break;
                 case 6:
+                    manager.filterApplicants();
+                    break;
+                case 7:
                     manager.generateApplicantReport();
                     break;
-                case 7: 
+                case 8: 
                     manager.sortApplicantsMenu();
                     break;
-                case 8:
+                case 9:
                     exit = true;
                     System.out.println("Exiting...");
                     break;
