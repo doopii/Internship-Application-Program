@@ -12,13 +12,11 @@ public class Schedule {
     private String scheduleID;
     private String scheduleTime;
     private String scheduleDesc;
-    private String scheduleStatus;
 
-    public Schedule(String scheduleID, String scheduleTime, String scheduleDesc, String scheduleStatus) {
+    public Schedule(String scheduleID, String scheduleTime, String scheduleDesc) {
         this.scheduleID = scheduleID;
         this.scheduleTime = scheduleTime;
         this.scheduleDesc = scheduleDesc;
-        this.scheduleStatus = scheduleStatus;
     }
 
     public String getScheduleID() {
@@ -45,17 +43,9 @@ public class Schedule {
         this.scheduleDesc = scheduleDesc;
     }
 
-    public String getScheduleStatus() {
-        return scheduleStatus;
-    }
-
-    public void setScheduleStatus(String scheduleStatus) {
-        this.scheduleStatus = scheduleStatus;
-    }
-
     @Override
     public String toString() {
-        return "Schedule{" + "scheduleID=" + scheduleID + ", scheduleTime=" + scheduleTime + ", scheduleDesc=" + scheduleDesc + ", scheduleStatus=" + scheduleStatus + '}';
+        return "Schedule{" + "scheduleID=" + scheduleID + ", scheduleTime=" + scheduleTime + ", scheduleDesc=" + scheduleDesc + " }";
     }
     
     @Override

@@ -8,6 +8,8 @@ public class InitialiserJava {
     private static DoublyListInterface<Applicant> applicantList;
     private static DoublyListInterface<Skill> skillList;
     private static DoublyListInterface<JobDesired> jobDesiredList;
+    private static DoublyListInterface<Schedule> scheduleList;
+    private static DoublyListInterface<Interview> interviewList;
     private static boolean isInitialized = false;
 
     public void initializeData() {
@@ -19,6 +21,8 @@ public class InitialiserJava {
         applicantList = new DoublyLinkedList<>();
         skillList = new DoublyLinkedList<>();
         jobDesiredList = new DoublyLinkedList<>();
+        scheduleList = new DoublyLinkedList<>();
+        interviewList = new DoublyLinkedList<>();
 
         // Programming
         Skill s1 = new Skill("Programming", "Java", "Beginner");
@@ -81,6 +85,89 @@ public class InitialiserJava {
         jobDesiredList.add(jd4);
         jobDesiredList.add(jd5);
         jobDesiredList.add(jd6);
+        
+        // Schedule
+        Schedule sched1 = new Schedule("S001", "2025-04-10 09:00AM", "Computer Science Interview Session 1");
+        scheduleList.add(sched1);
+        Schedule sched2 = new Schedule("S002", "2025-04-11 09:00AM", "Computer Science Interview Session 2");
+        scheduleList.add(sched2);
+        Schedule sched3 = new Schedule("S003", "2025-04-12 09:00AM", "Multimedia Interview Session 1");
+        scheduleList.add(sched3);
+        Schedule sched4 = new Schedule("S004", "2025-04-13 09:00AM", "Multimedia Interview Session 2");
+        scheduleList.add(sched4);
+
+        // Interview
+        // Schedule S001 - Computer Science 1
+        Interview i1 = new Interview("J1001", "S001", "IV001", "Software Engineer", "Success", "2025-04-10");
+        interviewList.add(i1);
+        Interview i2 = new Interview("J1002", "S001", "IV002", "Data Analyst", "Unsuccess", "2025-04-09");
+        interviewList.add(i2);
+        Interview i3 = new Interview("J1003", "S001", "IV003", "AI Developer", "Success", "2025-04-11");
+        interviewList.add(i3);
+        Interview i4 = new Interview("J1001", "S001", "IV004", "Software Engineer", "Unsuccess", "2025-04-10");
+        interviewList.add(i4);
+        Interview i5 = new Interview("J1002", "S001", "IV005", "Data Analyst", "Success", "2025-04-09");
+        interviewList.add(i5);
+        Interview i6 = new Interview("J1003", "S001", "IV006", "AI Developer", "Unsuccess", "2025-04-14");
+        interviewList.add(i6);
+        Interview i7 = new Interview("J1001", "S001", "IV007", "Software Engineer", "Success", "2025-04-13");
+        interviewList.add(i7);
+        Interview i8 = new Interview("J1002", "S001", "IV008", "Data Analyst", "Unsuccess", "2025-04-15");
+        interviewList.add(i8);
+
+        // Schedule S002 - Computer Science 2
+        Interview i9 = new Interview("J1003", "S002", "IV009", "AI Developer", "Success", "2025-04-12");
+        interviewList.add(i9);
+        Interview i10 = new Interview("J1001", "S002", "IV010", "Software Engineer", "Unsuccess", "2025-04-16");
+        interviewList.add(i10);
+        Interview i11 = new Interview("J1002", "S002", "IV011", "Data Analyst", "Success", "2025-04-13");
+        interviewList.add(i11);
+        Interview i12 = new Interview("J1003", "S002", "IV012", "AI Developer", "Unsuccess", "2025-04-11");
+        interviewList.add(i12);
+        Interview i13 = new Interview("J1001", "S002", "IV013", "Software Engineer", "Success", "2025-04-17");
+        interviewList.add(i13);
+        Interview i14 = new Interview("J1002", "S002", "IV014", "Data Analyst", "Unsuccess", "2025-04-20");
+        interviewList.add(i14);
+        Interview i15 = new Interview("J1003", "S002", "IV015", "AI Developer", "Success", "2025-04-12");
+        interviewList.add(i15);
+        Interview i16 = new Interview("J1001", "S002", "IV016", "Software Engineer", "Unsuccess", "2025-04-11");
+        interviewList.add(i16);
+
+        // Schedule S003 - Multimedia 1
+        Interview i17 = new Interview("J1004", "S003", "IV017", "Graphic Designer", "Success", "2025-04-14");
+        interviewList.add(i17);
+        Interview i18 = new Interview("J1005", "S003", "IV018", "Video Editor", "Unsuccess", "2025-04-12");
+        interviewList.add(i18);
+        Interview i19 = new Interview("J1006", "S003", "IV019", "Animator", "Success", "2025-04-13");
+        interviewList.add(i19);
+        Interview i20 = new Interview("J1004", "S003", "IV020", "Graphic Designer", "Unsuccess", "2025-04-13");
+        interviewList.add(i20);
+        Interview i21 = new Interview("J1005", "S003", "IV021", "Video Editor", "Success", "2025-04-12");
+        interviewList.add(i21);
+        Interview i22 = new Interview("J1006", "S003", "IV022", "Animator", "Unsuccess", "2025-04-20");
+        interviewList.add(i22);
+        Interview i23 = new Interview("J1004", "S003", "IV023", "Graphic Designer", "Success", "2025-04-12");
+        interviewList.add(i23);
+        Interview i24 = new Interview("J1005", "S003", "IV024", "Video Editor", "Unsuccess", "2025-04-15");
+        interviewList.add(i24);
+
+        // Schedule S004 - Multimedia 2
+        Interview i25 = new Interview("J1006", "S004", "IV025", "Animator", "Success", "2025-04-13");
+        interviewList.add(i25);
+        Interview i26 = new Interview("J1004", "S004", "IV026", "Graphic Designer", "Unsuccess", "2025-04-14");
+        interviewList.add(i26);
+        Interview i27 = new Interview("J1005", "S004", "IV027", "Video Editor", "Success", "2025-04-18");
+        interviewList.add(i27);
+        Interview i28 = new Interview("J1006", "S004", "IV028", "Animator", "Unsuccess", "2025-04-20");
+        interviewList.add(i28);
+        Interview i29 = new Interview("J1004", "S004", "IV029", "Graphic Designer", "Success", "2025-04-13");
+        interviewList.add(i29);
+        Interview i30 = new Interview("J1005", "S004", "IV030", "Video Editor", "Unsuccess", "2025-04-13");
+        interviewList.add(i30);
+        Interview i31 = new Interview("J1006", "S004", "IV031", "Animator", "Success", "2025-04-16");
+        interviewList.add(i31);
+        Interview i32 = new Interview("J1004", "S004", "IV032", "Graphic Designer", "Unsuccess", "2025-04-13");
+        interviewList.add(i32);
 
         DoublyLinkedList<Skill> skillList20 = new DoublyLinkedList<>();
         skillList20.add(s3); 
@@ -311,6 +398,8 @@ public class InitialiserJava {
     public DoublyListInterface<Applicant> getApplicantList() { return applicantList; }
     public DoublyListInterface<Skill> getSkillList() { return skillList; }
     public DoublyListInterface<JobDesired> getJobDesiredList() { return jobDesiredList; }
+    public DoublyListInterface<Schedule> getScheduleList() { return scheduleList; }
+    public DoublyListInterface<Interview> getInterviewList() { return interviewList; }
 } 
 
     

@@ -13,13 +13,15 @@ public class Interview {
     private String scheduleID;
     private String interviewID;
     private String interviewPosition;
+    private String interviewStatus;   
     private String interviewDate;
     
-    public Interview(String jobID, String scheduleID, String interviewID, String interviewPosition, String interviewDate) {
+    public Interview(String jobID, String scheduleID, String interviewID, String interviewPosition, String interviewStatus, String interviewDate) {
         this.jobID = jobID;
         this.scheduleID = scheduleID;
         this.interviewID = interviewID;
         this.interviewPosition = interviewPosition;
+        this.interviewStatus = interviewStatus;
         this.interviewDate = interviewDate;
     }
 
@@ -55,6 +57,14 @@ public class Interview {
         this.interviewPosition = interviewPosition;
     }
 
+    public String getInterviewStatus() {
+        return interviewStatus;
+    }
+
+    public void setInterviewStatus(String interviewStatus) {
+        this.interviewStatus = interviewStatus;
+    }
+
     public String getInterviewDate() {
         return interviewDate;
     }
@@ -65,7 +75,7 @@ public class Interview {
 
     @Override
     public String toString() {
-        return "Interview{" + "jobID=" + jobID + ", scheduleID=" + scheduleID + ", interviewID=" + interviewID + ", interviewPosition=" + interviewPosition + ", interviewDate=" + interviewDate + '}';
+        return "Interview{" + "jobID=" + jobID + ", scheduleID=" + scheduleID + ", interviewID=" + interviewID + ", interviewPosition=" + interviewPosition + ", interviewStatus=" + interviewStatus + ", interviewDate=" + interviewDate + '}';
     }
     
     @Override
