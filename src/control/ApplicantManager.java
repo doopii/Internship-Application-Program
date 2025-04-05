@@ -325,125 +325,216 @@ public class ApplicantManager {
         }
     }  // removeApplicant - donw
 
-    public void updateApplicant() {
-        if (applicantList.isEmpty()) {
-            System.out.println("No applicants to update.");
-            return;
+public void updateApplicant() {
+    if (applicantList.isEmpty()) {
+        System.out.println("No applicants to update.");
+        return;
+    }
+
+    System.out.println("\n===== Current Applicants =====");
+    showAllApplicants();
+
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Enter Applicant ID to update: ");
+    String id = scanner.nextLine().trim();
+
+    Applicant target = null;
+    int targetIndex = -1;
+
+    for (int i = 1; i <= applicantList.getNumberOfEntries(); i++) {
+        Applicant a = applicantList.getEntry(i);
+        if (a.getApplicantID().equalsIgnoreCase(id)) {
+            target = a;
+            targetIndex = i;
+            break;
         }
+    }
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter Applicant ID to update: ");
-        String id = scanner.nextLine().trim();
+    if (target == null) {
+        System.out.println("No applicant found with ID: " + id);
+        return;
+    }
 
-        Applicant target = null;
-        int targetIndex = -1;
+    System.out.println("\n--- Selected Applicant ---");
+    printApplicantDetails(target);
 
-        for (int i = 1; i <= applicantList.getNumberOfEntries(); i++) {
-            Applicant a = applicantList.getEntry(i);
-            if (a.getApplicantID().equalsIgnoreCase(id)) {
-                target = a;
-                targetIndex = i;
-                break;
+    boolean done = false;
+    while (!done) {
+        System.out.println("\n--- Update Menu for " + target.getApplicantName() + " ---");
+        System.out.println("1. Name");
+        System.out.println("2. Contact");
+        System.out.println("3. Email");
+        System.out.println("4. Address");
+        System.out.println("5. CGPA");
+        System.out.println("6. Skills");
+        System.out.println("7. Desired Jobs");
+        System.out.println("8. Done");
+        System.out.print("Select a field to update: ");
+        String choice = scanner.nextLine().trim();
+
+        if (choice.equals("1")) {
+            System.out.print("Enter new name: ");
+            target.setApplicantName(scanner.nextLine().trim());
+        } else if (choice.equals("2")) {
+            System.out.print("Enter new contact: ");
+            target.setApplicantContact(scanner.nextLine().trim());
+        } else if (choice.equals("3")) {
+            System.out.print("Enter new email: ");
+            target.setApplicantEmail(scanner.nextLine().trim());
+        } else if (choice.equals("4")) {
+            String[] states = {"Selangor", "Johor", "Kuala Lumpur", "Penang", "Sarawak"};
+            System.out.println("\nAvailable Addresses:");
+            for (int i = 0; i < states.length; i++) {
+                System.out.printf("%d. %s\n", i + 1, states[i]);
             }
-        }
-
-        if (target == null) {
-            System.out.println("No applicant found with ID: " + id);
-            return;
-        }
-
-        boolean done = false;
-        while (!done) {
-            System.out.println("\n--- Update Menu for " + target.getApplicantName() + " ---");
-            System.out.println("1. Name");
-            System.out.println("2. Contact");
-            System.out.println("3. Email");
-            System.out.println("4. Address");
-            System.out.println("5. CGPA");
-            System.out.println("6. Skills");
-            System.out.println("7. Job Desired");
-            System.out.println("8. Done");
-            System.out.print("Select a field to update: ");
-            String choice = scanner.nextLine();
-
-            switch (choice) {
-                case "1":
-                    System.out.print("Enter new name: ");
-                    target.setApplicantName(scanner.nextLine().trim());
-                    break;
-
-                case "2":
-                    System.out.print("Enter new contact: ");
-                    target.setApplicantContact(scanner.nextLine().trim());
-                    break;
-
-                case "3":
-                    System.out.print("Enter new email: ");
-                    target.setApplicantEmail(scanner.nextLine().trim());
-                    break;
-                case "4":
-                    System.out.print("Enter new address: ");
-                    target.setApplicantAddress(scanner.nextLine().trim());
-                    break;
-
-                case "5":
-                    System.out.print("Enter new CGPA: ");
-                    try {
-                        double newCgpa = Double.parseDouble(scanner.nextLine().trim());
-                        target.setCgpa(newCgpa);
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid CGPA input.");
-                    }
-                    break;
-
-                case "6":
-                    DoublyLinkedList<Skill> updatedSkills = new DoublyLinkedList<>();
-                    System.out.println("\nAvailable Skills:");
-                    for (int i = 1; i <= skillList.getNumberOfEntries(); i++) {
-                        Skill s = (Skill) skillList.getEntry(i);
-                        System.out.printf("%2d. %-20s (%s)\n", i, s.getSkillName(), s.getProficiency());
-                    }
-                    System.out.print("Enter skill numbers (e.g. 1 3 5): ");
-                    String[] skillIndexes = scanner.nextLine().trim().split("\\s+");
-                    for (String index : skillIndexes) {
-                        int idx = Integer.parseInt(index.trim());
-                        if (idx >= 1 && idx <= skillList.getNumberOfEntries()) {
-                            updatedSkills.add((Skill) skillList.getEntry(idx));
-                        }
-                    }
-                    target.setSkillList(updatedSkills);
-                    break;
-
-                case "7":
-                    DoublyLinkedList<JobDesired> updatedJobs = new DoublyLinkedList<>();
-                    System.out.println("\nAvailable Job Positions:");
-                    for (int i = 1; i <= jobDesiredList.getNumberOfEntries(); i++) {
-                        JobDesired j = (JobDesired) jobDesiredList.getEntry(i);
-                        System.out.printf("%2d. %-25s (%s)\n", i, j.getPosition(), j.getCategory());
-                    }
-                    System.out.print("Enter job numbers (e.g. 2 5): ");
-                    String[] jobIndexes = scanner.nextLine().trim().split("\\s+");
-                    for (String index : jobIndexes) {
-                        int idx = Integer.parseInt(index.trim());
-                        if (idx >= 1 && idx <= jobDesiredList.getNumberOfEntries()) {
-                            updatedJobs.add((JobDesired) jobDesiredList.getEntry(idx));
-                        }
-                    }
-                    target.setJobDesiredList(updatedJobs);
-                    break;
-
-                case "8":
-                    done = true;
-                    break;
-
-                default:
-                    System.out.println("Invalid choice. Try again.");
+            System.out.print("Select new address number: ");
+            int addrChoice = Integer.parseInt(scanner.nextLine());
+            if (addrChoice >= 1 && addrChoice <= states.length) {
+                target.setApplicantAddress(states[addrChoice - 1]);
+            } else {
+                System.out.println("Invalid choice.");
             }
+        } else if (choice.equals("5")) {
+            System.out.print("Enter new CGPA: ");
+            try {
+                double newCgpa = Double.parseDouble(scanner.nextLine().trim());
+                target.setCgpa(newCgpa);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid CGPA input.");
+            }
+        } else if (choice.equals("6")) {
+            System.out.println("1. Reset skills");
+            System.out.println("2. Add new skills");
+            System.out.print("Choose option: ");
+            String skillOpt = scanner.nextLine().trim();
+            if (skillOpt.equals("1")) {
+                target.setSkillList(new DoublyLinkedList<>());
+            }
+
+            boolean addMoreSkill = true;
+            while (addMoreSkill) {
+                DoublyLinkedList<String> categories = new DoublyLinkedList<>();
+                for (int i = 1; i <= skillList.getNumberOfEntries(); i++) {
+                    String cat = skillList.getEntry(i).getCategory();
+                    if (!categories.contains(cat)) categories.add(cat);
+                }
+
+                System.out.println("\nAvailable Skill Categories:");
+                for (int i = 1; i <= categories.getNumberOfEntries(); i++) {
+                    System.out.printf("%d. %s\n", i, categories.getEntry(i));
+                }
+                System.out.print("Choose skill category number: ");
+                int catIndex = Integer.parseInt(scanner.nextLine());
+                String selectedCat = categories.getEntry(catIndex);
+
+                DoublyLinkedList<String> skillNames = new DoublyLinkedList<>();
+                for (int i = 1; i <= skillList.getNumberOfEntries(); i++) {
+                    Skill s = skillList.getEntry(i);
+                    if (s.getCategory().equalsIgnoreCase(selectedCat) && !skillNames.contains(s.getSkillName())) {
+                        skillNames.add(s.getSkillName());
+                    }
+                }
+
+                System.out.println("\nSkill Names in " + selectedCat + ":");
+                for (int i = 1; i <= skillNames.getNumberOfEntries(); i++) {
+                    System.out.printf("%d. %s\n", i, skillNames.getEntry(i));
+                }
+
+                System.out.print("Choose skill name number: ");
+                int skillIndex = Integer.parseInt(scanner.nextLine());
+                String selectedSkill = skillNames.getEntry(skillIndex);
+
+                String proficiency = "";
+                System.out.println("\nAvailable Proficiency:");
+                System.out.println("1. Beginner");
+                System.out.println("2. Intermediate");
+                System.out.println("3. Advanced");
+                System.out.print("Choose proficiency number: ");
+                String profChoice = scanner.nextLine().trim();
+
+                if (profChoice.equals("1")) {
+                    proficiency = "Beginner";
+                } else if (profChoice.equals("2")) {
+                    proficiency = "Intermediate";
+                } else if (profChoice.equals("3")) {
+                    proficiency = "Advanced";
+                } else {
+                    System.out.println("Invalid proficiency. Skipping this skill.");
+                    continue;
+                }
+
+                target.getSkillList().add(new Skill(selectedCat, selectedSkill, proficiency));
+                System.out.print("Add more skills? (1 = Yes, 2 = No): ");
+                addMoreSkill = scanner.nextLine().trim().equals("1");
+            }
+
+            System.out.println("Skills updated.");
+        } else if (choice.equals("7")) {
+            System.out.println("1. Reset jobs");
+            System.out.println("2. Add new desired jobs");
+            System.out.print("Choose option: ");
+            String jobOpt = scanner.nextLine().trim();
+            if (jobOpt.equals("1")) {
+                target.setJobDesiredList(new DoublyLinkedList<>());
+            }
+
+            boolean addMoreJob = true;
+            while (addMoreJob) {
+                DoublyLinkedList<String> jobCats = new DoublyLinkedList<>();
+                for (int i = 1; i <= jobDesiredList.getNumberOfEntries(); i++) {
+                    String cat = jobDesiredList.getEntry(i).getCategory();
+                    if (!jobCats.contains(cat)) jobCats.add(cat);
+                }
+
+                System.out.println("\nAvailable Job Categories:");
+                for (int i = 1; i <= jobCats.getNumberOfEntries(); i++) {
+                    System.out.printf("%d. %s\n", i, jobCats.getEntry(i));
+                }
+
+                System.out.print("Choose job category number: ");
+                int catIndex = Integer.parseInt(scanner.nextLine());
+                String selectedCat = jobCats.getEntry(catIndex);
+
+                DoublyLinkedList<JobDesired> jobsInCat = new DoublyLinkedList<>();
+                for (int i = 1; i <= jobDesiredList.getNumberOfEntries(); i++) {
+                    JobDesired jd = jobDesiredList.getEntry(i);
+                    if (jd.getCategory().equalsIgnoreCase(selectedCat)) {
+                        jobsInCat.add(jd);
+                    }
+                }
+
+                System.out.println("\nAvailable Positions in " + selectedCat + ":");
+                for (int i = 1; i <= jobsInCat.getNumberOfEntries(); i++) {
+                    System.out.printf("%d. %s\n", i, jobsInCat.getEntry(i).getPosition());
+                }
+
+                System.out.print("Choose job position number: ");
+                int posIndex = Integer.parseInt(scanner.nextLine());
+                JobDesired selectedJob = jobsInCat.getEntry(posIndex);
+
+                target.getJobDesiredList().add(selectedJob);
+
+                System.out.print("Add more desired jobs? (1 = Yes, 2 = No): ");
+                addMoreJob = scanner.nextLine().trim().equals("1");
+            }
+
+            System.out.println("Desired jobs updated.");
+        } else if (choice.equals("8")) {
+            done = true;
+        } else {
+            System.out.println("Invalid choice.");
         }
 
-        applicantList.replace(targetIndex, target);
-        System.out.println("\nApplicant updated successfully.");
-    } // updateApplicant - done
+        if (!choice.equals("8")) {
+            System.out.println("\n--- Updated Applicant Info ---");
+            printApplicantDetails(target);
+        }
+    }
+
+    applicantList.replace(targetIndex, target);
+    System.out.println("\n✅ Applicant updated successfully.");
+}
+
 
     public void filterApplicants() {
         if (applicantList.isEmpty()) {
@@ -673,7 +764,6 @@ public class ApplicantManager {
                 System.out.print("Filter by proficiency level? (1 = Yes, 2 = No): ");
                 String profChoice = scanner.nextLine();
                 if (profChoice.equals("1")) {
-                    // Gather all proficiencies under the selected skill
                     DoublyLinkedList<String> profs = new DoublyLinkedList<>();
                     for (int i = 1; i <= skillList.getNumberOfEntries(); i++) {
                         Skill s = skillList.getEntry(i);
