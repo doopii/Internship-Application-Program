@@ -22,4 +22,5 @@ public interface DoublyListInterface<E> extends Cloneable {
     Iterator<E> getIterator();
     DoublyListInterface<E> clone();
     E getLast();
+    void swap(int index1, int index2);
 }

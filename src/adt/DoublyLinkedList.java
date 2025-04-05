@@ -220,7 +220,37 @@ public class DoublyLinkedList<E> implements DoublyListInterface<E>, Cloneable, S
         return (E) lastNode.data;
     }
 
+    @Override
+    public void swap(int index1, int index2) {
+        if (index1 == index2) return;
 
+        if (index1 < 1 || index2 < 1 || index1 > numberOfEntries || index2 > numberOfEntries) {
+            throw new IndexOutOfBoundsException("Invalid indices for swap.");
+        }
+
+        // Make sure index1 is smaller
+        if (index1 > index2) {
+            int temp = index1;
+            index1 = index2;
+            index2 = temp;
+        }
+
+        Node node1 = firstNode;
+        for (int i = 1; i < index1; i++) {
+            node1 = node1.nextNode;
+        }
+
+        Node node2 = node1;
+        for (int i = index1; i < index2; i++) {
+            node2 = node2.nextNode;
+        }
+
+        E tempData = (E) node1.data;
+        node1.data = node2.data;
+        node2.data = tempData;
+    }
+
+    
     /**
      * Get if the two objects are equal by their entries
      *
@@ -300,6 +330,7 @@ public class DoublyLinkedList<E> implements DoublyListInterface<E>, Cloneable, S
             }
         }
         
+
 
     }
 }
