@@ -185,7 +185,6 @@ public class InitialiserJava {
         applicantList.add(new Applicant("A002", "Wong Ning Ning", "01670772704", "ningwong@gmail.com", "Selangor", 3.8, skillList1, jobList1));
 
         DoublyLinkedList<Skill> skillList2 = new DoublyLinkedList<>();
-        skillList2.add(s5);
         skillList2.add(s6);
         DoublyLinkedList<JobDesired> jobList2 = new DoublyLinkedList<>();
         jobList2.add(jd4);
@@ -193,15 +192,15 @@ public class InitialiserJava {
 
         DoublyLinkedList<Skill> skillList3 = new DoublyLinkedList<>();
         skillList3.add(s5);
-        skillList3.add(s3);
+        skillList3.add(s10);
         DoublyLinkedList<JobDesired> jobList3 = new DoublyLinkedList<>();
         jobList3.add(jd4);
         jobList3.add(jd6);
-        applicantList.add(new Applicant("A004", "Tan Mei Ling", "01388699038", "meiling@gmail.com", "Selangor", 3.8, skillList3, jobList3));
+        applicantList.add(new Applicant("A004", "Tan Mei Ling", "01388699038", "meiling@gmail.com", "Selangor", 2.8, skillList3, jobList3));
 
         DoublyLinkedList<Skill> skillList4 = new DoublyLinkedList<>();
         skillList4.add(s5);
-        skillList4.add(s4);
+        skillList4.add(s7);
         skillList4.add(s1);
         DoublyLinkedList<JobDesired> jobList4 = new DoublyLinkedList<>();
         jobList4.add(jd1);
@@ -209,7 +208,7 @@ public class InitialiserJava {
 
         DoublyLinkedList<Skill> skillList5 = new DoublyLinkedList<>();
         skillList5.add(s4);
-        skillList5.add(s2);
+        skillList5.add(s9);
         DoublyLinkedList<JobDesired> jobList5 = new DoublyLinkedList<>();
         jobList5.add(jd3);
         jobList5.add(jd2);
@@ -223,19 +222,18 @@ public class InitialiserJava {
         applicantList.add(new Applicant("A007", "Siti Aisyah", "01378255314", "aisyah@gmail.com", "Johor", 3.1, skillList6, jobList6));
 
         DoublyLinkedList<Skill> skillList7 = new DoublyLinkedList<>();
-        skillList7.add(s6);
         skillList7.add(s5);
         skillList7.add(s2);
         DoublyLinkedList<JobDesired> jobList7 = new DoublyLinkedList<>();
         jobList7.add(jd6);
-        applicantList.add(new Applicant("A008", "Rajesh Kumar", "01142088959", "rajesh.kumar@gmail.com", "Johor", 3.7, skillList7, jobList7));
+        applicantList.add(new Applicant("A008", "Rajesh Kumar", "01142088959", "rajesh.kumar@gmail.com", "Johor", 2.7, skillList7, jobList7));
 
         DoublyLinkedList<Skill> skillList8 = new DoublyLinkedList<>();
-        skillList8.add(s6);
+        skillList8.add(s15);
         skillList8.add(s2);
         DoublyLinkedList<JobDesired> jobList8 = new DoublyLinkedList<>();
         jobList8.add(jd3);
-        applicantList.add(new Applicant("A009", "Nurul Ain", "01431159253", "nurul@gmail.com", "Penang", 3.8, skillList8, jobList8));
+        applicantList.add(new Applicant("A009", "Nurul Ain", "01431159253", "nurul@gmail.com", "Penang", 1.7, skillList8, jobList8));
 
         DoublyLinkedList<Skill> skillList9 = new DoublyLinkedList<>();
         skillList9.add(s3);
@@ -249,18 +247,18 @@ public class InitialiserJava {
         DoublyLinkedList<Skill> skillList10 = new DoublyLinkedList<>();
         skillList10.add(s5);
         skillList10.add(s2);
-        skillList10.add(s3);
+        skillList10.add(s11);
         DoublyLinkedList<JobDesired> jobList10 = new DoublyLinkedList<>();
         jobList10.add(jd5);
         jobList10.add(jd4);
-        applicantList.add(new Applicant("A011", "Chong Kai Lun", "01375237275", "ckl@gmail.com", "Penang", 3.5, skillList10, jobList10));
+        applicantList.add(new Applicant("A011", "Chong Kai Lun", "01375237275", "ckl@gmail.com", "Penang", 4, skillList10, jobList10));
 
         DoublyLinkedList<Skill> skillList11 = new DoublyLinkedList<>();
         skillList11.add(s6);
         skillList11.add(s2);
         DoublyLinkedList<JobDesired> jobList11 = new DoublyLinkedList<>();
         jobList11.add(jd6);
-        applicantList.add(new Applicant("A012", "Farah Nadia", "01464046749", "farah.nadia@gmail.com", "Penang", 3.8, skillList11, jobList11));
+        applicantList.add(new Applicant("A012", "Farah Nadia", "01464046749", "farah.nadia@gmail.com", "Penang", 3.3, skillList11, jobList11));
 
         DoublyLinkedList<Skill> skillList12 = new DoublyLinkedList<>();
         skillList12.add(s3);
@@ -268,7 +266,7 @@ public class InitialiserJava {
         DoublyLinkedList<JobDesired> jobList12 = new DoublyLinkedList<>();
         jobList12.add(jd5);
         jobList12.add(jd4);
-        applicantList.add(new Applicant("A013", "Ganesh Subramaniam", "01339903261", "ganesh.s@gmail.com", "Penang", 3.9, skillList12, jobList12));
+        applicantList.add(new Applicant("A013", "Ganesh Subramaniam", "01339903261", "ganesh.s@gmail.com", "Penang", 4, skillList12, jobList12));
 
         DoublyLinkedList<Skill> skillList13 = new DoublyLinkedList<>();
         skillList13.add(s3);
@@ -293,7 +291,7 @@ public class InitialiserJava {
         skillList15.add(s3);
         DoublyLinkedList<JobDesired> jobList15 = new DoublyLinkedList<>();
         jobList15.add(jd2);
-        applicantList.add(new Applicant("A016", "Nabilah Ramli", "01998043964", "nabilah.ramli@gmail.com", "Sabah", 3.4, skillList15, jobList15));
+        applicantList.add(new Applicant("A016", "Nabilah Ramli", "01998043964", "nabilah.ramli@gmail.com", "Sabah", 3.1, skillList15, jobList15));
 
         DoublyLinkedList<Skill> skillList16 = new DoublyLinkedList<>();
         skillList16.add(s6);
@@ -301,7 +299,7 @@ public class InitialiserJava {
         skillList16.add(s3);
         DoublyLinkedList<JobDesired> jobList16 = new DoublyLinkedList<>();
         jobList16.add(jd1);
-        applicantList.add(new Applicant("A017", "Amar Daniel", "01682479596", "amar.d@gmail.com", "Sabah", 3.8, skillList16, jobList16));
+        applicantList.add(new Applicant("A017", "Amar Daniel", "01682479596", "amar.d@gmail.com", "Sabah", 2.8, skillList16, jobList16));
 
         DoublyLinkedList<Skill> skillList17 = new DoublyLinkedList<>();
         skillList17.add(s6);
@@ -309,7 +307,7 @@ public class InitialiserJava {
         skillList17.add(s3);
         DoublyLinkedList<JobDesired> jobList17 = new DoublyLinkedList<>();
         jobList17.add(jd3);
-        applicantList.add(new Applicant("A018", "Chong Mei Yen", "01388130563", "mei.yen@gmail.com", "Kuala Lumpur", 3.7, skillList17, jobList17));
+        applicantList.add(new Applicant("A018", "Chong Mei Yen", "01388130563", "mei.yen@gmail.com", "Kuala Lumpur", 2, skillList17, jobList17));
 
         DoublyLinkedList<Skill> skillList18 = new DoublyLinkedList<>();
         skillList18.add(s3);
@@ -345,52 +343,222 @@ public class InitialiserJava {
         sList23.add(s9);  
         DoublyLinkedList<JobDesired> jList23 = new DoublyLinkedList<>();
         jList23.add(jd5); 
-        applicantList.add(new Applicant("A023", "Aisha Farzana", "0165559988", "aisha.f@gmail.com", "Johor", 3.2, sList23, jList23));
+        applicantList.add(new Applicant("A023", "Aisha Farzana", "01655599883", "aisha.f@gmail.com", "Johor", 3.2, sList23, jList23));
 
         DoublyLinkedList<Skill> sList24 = new DoublyLinkedList<>();
         sList24.add(s10); 
         DoublyLinkedList<JobDesired> jList24 = new DoublyLinkedList<>();
         jList24.add(jd4); 
         jList24.add(jd6); 
-        applicantList.add(new Applicant("A024", "Ramesh Kumar", "0128877665", "ramesh.k@gmail.com", "Penang", 3.0, sList24, jList24));
+        applicantList.add(new Applicant("A024", "Ramesh Kumar", "01288776658", "ramesh.k@gmail.com", "Penang", 3.0, sList24, jList24));
 
         DoublyLinkedList<Skill> sList25 = new DoublyLinkedList<>();
         sList25.add(s2); 
         sList25.add(s5); 
         DoublyLinkedList<JobDesired> jList25 = new DoublyLinkedList<>();
         jList25.add(jd2); 
-        applicantList.add(new Applicant("A025", "Tan Li Yin", "0132211988", "liyin.tan@gmail.com", "Sarawak", 3.6, sList25, jList25));
+        applicantList.add(new Applicant("A025", "Tan Li Yin", "01322119881", "liyin.tan@gmail.com", "Sarawak", 3.6, sList25, jList25));
 
         DoublyLinkedList<Skill> sList26 = new DoublyLinkedList<>();
         sList26.add(s3); 
         DoublyLinkedList<JobDesired> jList26 = new DoublyLinkedList<>();
         jList26.add(jd1); 
-        applicantList.add(new Applicant("A026", "Izzat Hakim", "0199933112", "izzat.hakim@gmail.com", "Selangor", 2.1, sList26, jList26));
+        applicantList.add(new Applicant("A026", "Izzat Hakim", "01999331121", "izzat.hakim@gmail.com", "Selangor", 2.1, sList26, jList26));
 
         DoublyLinkedList<Skill> sList27 = new DoublyLinkedList<>();
         sList27.add(s18); 
         DoublyLinkedList<JobDesired> jList27 = new DoublyLinkedList<>();
         jList27.add(jd4); 
-        applicantList.add(new Applicant("A027", "Sabrina Chew", "0185566990", "sabrina.c@gmail.com", "Johor", 3.7, sList27, jList27));
+        applicantList.add(new Applicant("A027", "Sabrina Chew", "01855669902", "sabrina.c@gmail.com", "Johor", 3.7, sList27, jList27));
 
         DoublyLinkedList<Skill> sList28 = new DoublyLinkedList<>();
         sList28.add(s11); 
         DoublyLinkedList<JobDesired> jList28 = new DoublyLinkedList<>();
         jList28.add(jd3); 
-        applicantList.add(new Applicant("A028", "Aditya Roy", "0147778855", "aditya.r@gmail.com", "Sabah", 1.9, sList28, jList28));
+        applicantList.add(new Applicant("A028", "Aditya Roy", "01477788557", "aditya.r@gmail.com", "Sabah", 1.9, sList28, jList28));
 
         DoublyLinkedList<Skill> sList29 = new DoublyLinkedList<>();
         sList29.add(s16); 
         DoublyLinkedList<JobDesired> jList29 = new DoublyLinkedList<>();
         jList29.add(jd6); 
-        applicantList.add(new Applicant("A029", "Puteri Aisyah", "0129988776", "aisyah.p@gmail.com", "Kuala Lumpur", 2.8, sList29, jList29));
+        applicantList.add(new Applicant("A029", "Puteri Aisyah", "01299887763", "aisyah.p@gmail.com", "Kuala Lumpur", 2.8, sList29, jList29));
 
         DoublyLinkedList<Skill> sList30 = new DoublyLinkedList<>();
         sList30.add(s8);  
         DoublyLinkedList<JobDesired> jList30 = new DoublyLinkedList<>();
         jList30.add(jd1); 
         jList30.add(jd5); 
-        applicantList.add(new Applicant("A030", "Daniel Chong", "0176655443", "daniel.ch@gmail.com", "Sarawak", 3.45, sList30, jList30));
+        applicantList.add(new Applicant("A030", "Daniel Chong", "01766554432", "daniel.ch@gmail.com", "Sarawak", 3.45, sList30, jList30));
+
+        DoublyLinkedList<Skill> sList31 = new DoublyLinkedList<>();
+        sList31.add(s1);
+        sList31.add(s10);
+        DoublyLinkedList<JobDesired> jList31 = new DoublyLinkedList<>();
+        jList31.add(jd1);
+        applicantList.add(new Applicant("A031", "Ng Wei Hong", "01355669878", "weihong.ng@gmail.com", "Penang", 2.4, sList31, jList31));
+
+        DoublyLinkedList<Skill> sList32 = new DoublyLinkedList<>();
+        sList32.add(s14);
+        sList32.add(s18);
+        DoublyLinkedList<JobDesired> jList32 = new DoublyLinkedList<>();
+        jList32.add(jd6);
+        applicantList.add(new Applicant("A032", "Samantha Kaur", "01488900232", "samantha.kaur@gmail.com", "Kuala Lumpur", 3.2, sList32, jList32));
+
+        DoublyLinkedList<Skill> sList33 = new DoublyLinkedList<>();
+        sList33.add(s5);
+        DoublyLinkedList<JobDesired> jList33 = new DoublyLinkedList<>();
+        jList33.add(jd2);
+        jList33.add(jd5);
+        applicantList.add(new Applicant("A033", "Ariff Azman", "01266789918", "ariff.azman@gmail.com", "Sarawak", 2.8, sList33, jList33));
+
+        DoublyLinkedList<Skill> sList34 = new DoublyLinkedList<>();
+        sList34.add(s7);
+        sList34.add(s13);
+        DoublyLinkedList<JobDesired> jList34 = new DoublyLinkedList<>();
+        jList34.add(jd3);
+        applicantList.add(new Applicant("A034", "Loh Jia Wen", "01199458232", "jiawen.loh@gmail.com", "Johor", 3.6, sList34, jList34));
+
+        DoublyLinkedList<Skill> sList35 = new DoublyLinkedList<>();
+        sList35.add(s4);
+        sList35.add(s6);
+        sList35.add(s15);
+        DoublyLinkedList<JobDesired> jList35 = new DoublyLinkedList<>();
+        jList35.add(jd5);
+        applicantList.add(new Applicant("A035", "Izzat Firdaus", "01788412233", "izzat.firdaus@gmail.com", "Selangor", 3.0, sList35, jList35));
+
+        DoublyLinkedList<Skill> sList36 = new DoublyLinkedList<>();
+        sList36.add(s12);
+        DoublyLinkedList<JobDesired> jList36 = new DoublyLinkedList<>();
+        jList36.add(jd4);
+        applicantList.add(new Applicant("A036", "Lim Hui Min", "01974563215", "huimin.lim@gmail.com", "Penang", 2.3, sList36, jList36));
+
+        DoublyLinkedList<Skill> sList37 = new DoublyLinkedList<>();
+        sList37.add(s2);
+        sList37.add(s17);
+        DoublyLinkedList<JobDesired> jList37 = new DoublyLinkedList<>();
+        jList37.add(jd1);
+        jList37.add(jd6);
+        applicantList.add(new Applicant("A037", "Nadia Harith", "01487932106", "nadia.harith@gmail.com", "Kuala Lumpur", 3.9, sList37, jList37));
+
+        DoublyLinkedList<Skill> sList38 = new DoublyLinkedList<>();
+        sList38.add(s11);
+        DoublyLinkedList<JobDesired> jList38 = new DoublyLinkedList<>();
+        jList38.add(jd3);
+        applicantList.add(new Applicant("A038", "Teoh Zhi Hao", "01239011238", "zhihao.teoh@gmail.com", "Selangor", 2.1, sList38, jList38));
+
+        DoublyLinkedList<Skill> sList39 = new DoublyLinkedList<>();
+        sList39.add(s9);
+        sList39.add(s6);
+        DoublyLinkedList<JobDesired> jList39 = new DoublyLinkedList<>();
+        jList39.add(jd5);
+        jList39.add(jd2);
+        applicantList.add(new Applicant("A039", "Zarina Kamal", "01362297849", "zarina.kamal@gmail.com", "Sarawak", 3.3, sList39, jList39));
+
+        DoublyLinkedList<Skill> sList40 = new DoublyLinkedList<>();
+        sList40.add(s8);
+        sList40.add(s16);
+        DoublyLinkedList<JobDesired> jList40 = new DoublyLinkedList<>();
+        jList40.add(jd4);
+        applicantList.add(new Applicant("A040", "Chin Mei Yee", "01193476212", "mei.yee@gmail.com", "Johor", 3.7, sList40, jList40));
+
+        DoublyLinkedList<Skill> sList41 = new DoublyLinkedList<>();
+        sList41.add(s16);
+        sList41.add(s15);
+        sList41.add(s8);
+
+        DoublyLinkedList<JobDesired> jList41 = new DoublyLinkedList<>();
+        jList41.add(jd4);
+        jList41.add(jd1);
+
+        applicantList.add(new Applicant("A041", "Mrs. Kaitlyn Potter", "01718887270", "obailey@hotmail.com", "Selangor", 2.22, sList41, jList41));
+
+        DoublyLinkedList<Skill> sList42 = new DoublyLinkedList<>();
+        sList42.add(s15);
+        sList42.add(s8);
+
+        DoublyLinkedList<JobDesired> jList42 = new DoublyLinkedList<>();
+        jList42.add(jd3);
+
+        applicantList.add(new Applicant("A042", "Stacey Barnes", "01382880650", "elizabeth10@gmail.com", "Johor", 2.68, sList42, jList42));
+
+        DoublyLinkedList<Skill> sList43 = new DoublyLinkedList<>();
+        sList43.add(s11);
+        sList43.add(s5);
+        sList43.add(s16);
+
+        DoublyLinkedList<JobDesired> jList43 = new DoublyLinkedList<>();
+        jList43.add(jd5);
+
+        applicantList.add(new Applicant("A043", "Jean Martinez", "01157681354", "sotoleah@yahoo.com", "Selangor", 3.86, sList43, jList43));
+
+        DoublyLinkedList<Skill> sList44 = new DoublyLinkedList<>();
+        sList44.add(s10);
+        sList44.add(s9);
+
+        DoublyLinkedList<JobDesired> jList44 = new DoublyLinkedList<>();
+        jList44.add(jd3);
+        jList44.add(jd5);
+
+        applicantList.add(new Applicant("A044", "Patrick Gibson", "01450805504", "shannon74@gmail.com", "Penang", 2.56, sList44, jList44));
+
+        DoublyLinkedList<Skill> sList45 = new DoublyLinkedList<>();
+        sList45.add(s12);
+        sList45.add(s9);
+        sList45.add(s4);
+
+        DoublyLinkedList<JobDesired> jList45 = new DoublyLinkedList<>();
+        jList45.add(jd6);
+
+        applicantList.add(new Applicant("A045", "Jose Hawkins", "01136580055", "gardnermiguel@hotmail.com", "Penang", 3.93, sList45, jList45));
+
+        DoublyLinkedList<Skill> sList46 = new DoublyLinkedList<>();
+        sList46.add(s6);
+        sList46.add(s8);
+
+        DoublyLinkedList<JobDesired> jList46 = new DoublyLinkedList<>();
+        jList46.add(jd3);
+        jList46.add(jd1);
+
+        applicantList.add(new Applicant("A046", "Dillon Hunter", "01614922551", "joseph08@blanchard.com", "Sarawak", 3.73, sList46, jList46));
+
+        DoublyLinkedList<Skill> sList47 = new DoublyLinkedList<>();
+        sList47.add(s16);
+        sList47.add(s14);
+
+        DoublyLinkedList<JobDesired> jList47 = new DoublyLinkedList<>();
+        jList47.add(jd5);
+
+        applicantList.add(new Applicant("A047", "Stephanie Smith", "01462196481", "christopher@gmail.com", "Johor", 1.91, sList47, jList47));
+
+        DoublyLinkedList<Skill> sList48 = new DoublyLinkedList<>();
+        sList48.add(s18);
+        sList48.add(s5);
+        sList48.add(s9);
+
+        DoublyLinkedList<JobDesired> jList48 = new DoublyLinkedList<>();
+        jList48.add(jd5);
+
+        applicantList.add(new Applicant("A048", "Brandi Zamora", "01398231469", "zvasquez@scott.info", "Sarawak", 1.96, sList48, jList48));
+
+        DoublyLinkedList<Skill> sList49 = new DoublyLinkedList<>();
+        sList49.add(s11);
+        sList49.add(s12);
+        sList49.add(s15);
+
+        DoublyLinkedList<JobDesired> jList49 = new DoublyLinkedList<>();
+        jList49.add(jd3);
+        jList49.add(jd2);
+
+        applicantList.add(new Applicant("A049", "Thomas Pittman", "01436740184", "villanue@gmail.com", "Sarawak", 3.45, sList49, jList49));
+
+        DoublyLinkedList<Skill> sList50 = new DoublyLinkedList<>();
+        sList50.add(s5);
+        sList50.add(s17);
+
+        DoublyLinkedList<JobDesired> jList50 = new DoublyLinkedList<>();
+        jList50.add(jd2);
+
+        applicantList.add(new Applicant("A050", "Cody Wilson", "01173167971", "alexis01@gmail.com", "Kuala Lumpur", 3.79, sList50, jList50));
 
 
         isInitialized = true;
